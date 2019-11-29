@@ -1,0 +1,4 @@
+APIKEY = '14C10292983D48CE86E1AA1FE0F8DDFE'
+ACCOUNTKEY = '37D2FF0357974DFFA685EC3DA5839338'
+API = 'https://nz-api.workflowmax.com/'
+POST_TIME = '%stime.api/add?apiKey=%s&accountKey=%s' % (API, APIKEY, ACCOUNTKEY)

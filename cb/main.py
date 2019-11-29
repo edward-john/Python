@@ -1,34 +1,44 @@
-import sys
 import os
-
-from PyQt5 import QtWidgets, QtCore, QtGui
-from PyQt5.QtWidgets import QApplication, QMainWindow, QWidget, QVBoxLayout, QSizeGrip
-from ui import main
+import sys
 
 import qdarkstyle
+from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt5.QtCore import QBasicTimer, QCoreApplication, QPoint
+from PyQt5.QtGui import QFont, QIcon, QPalette, QPixmap
+from PyQt5.QtWidgets import (QAction, QApplication, QComboBox, QDesktopWidget,
+                             QDialog, QFrame, QGridLayout, QLabel, QLineEdit,
+                             QMainWindow, QMenu, QMenuBar, QMessageBox,
+                             QProgressBar, QPushButton, QStatusBar, QTextEdit,
+                             QToolBar, QToolTip, QVBoxLayout, QWidget, qApp)
+
+from ui import main
 
 
 class Window(main.Ui_MainWindow, QtWidgets.QMainWindow):
     def __init__(self):
+        """Window Object"""
         super(Window, self).__init__()
 
-        self.setupUi(self)
-        self.populate()
-        self.title = 'Client File Browser'
-        # self.model.itemDoubleClicked.connect(self.open_file)
+        self.setupUi(self) #Initialize UI
+        self.populate() #Run FileSystem Model
+        self.title = 'Client File Browser' #Set Window Title
+
+        # Set Flags (Frameless)
         flags = QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setWindowFlags(flags)
+
+        #Context Menu
         self.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.treeView.customContextMenuRequested.connect(self.context_menu)
-        vbox = QVBoxLayout()
-        sizegrip = QSizeGrip(self)
-        vbox.addWidget(sizegrip)
 
-        self.setLayout(vbox)
+        self.oldPos = self.pos()
+
+        #Show Window
         self.show()
 
-    
+
     def populate(self):
+        """Load file browser model on tree view"""
         path = f'{os.environ["USERPROFILE"]}\\Desktop'
         self.model = QtWidgets.QFileSystemModel()
         self.model.setRootPath((QtCore.QDir.rootPath()))
@@ -38,21 +48,40 @@ class Window(main.Ui_MainWindow, QtWidgets.QMainWindow):
 
 
     def context_menu(self):
+        """Right Click Menu: [OPEN]"""
         menu = QtWidgets.QMenu()
         open = menu.addAction('Open')
         open.triggered.connect(self.open_file)
         cursor = QtGui.QCursor()
         menu.exec_(cursor.pos())
-    
+
 
     def open_file(self):
+        """Open Function"""
         index = self.treeView.currentIndex()
         file_path = self.model.filePath(index)
         os.startfile(file_path)
 
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
+
 if __name__ == '__main__':
     app = QApplication(sys.argv)
-    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5())
+    app.setStyleSheet(qdarkstyle.load_stylesheet_pyqt5()) #Dark Theme
     window = Window()
-    print((QtCore.QDir.rootPath()))
     sys.exit(app.exec_())

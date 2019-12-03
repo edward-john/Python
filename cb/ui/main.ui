@@ -7,7 +7,11 @@
     <x>0</x>
     <y>0</y>
     <width>1032</width>
+<<<<<<< HEAD
     <height>677</height>
+=======
+    <height>685</height>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
    </rect>
   </property>
   <property name="sizePolicy">
@@ -24,7 +28,11 @@
     <property name="geometry">
      <rect>
       <x>10</x>
+<<<<<<< HEAD
       <y>150</y>
+=======
+      <y>160</y>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
       <width>1012</width>
       <height>511</height>
      </rect>
@@ -70,8 +78,13 @@
          <rect>
           <x>0</x>
           <y>0</y>
+<<<<<<< HEAD
           <width>279</width>
           <height>476</height>
+=======
+          <width>278</width>
+          <height>469</height>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
          </rect>
         </property>
        </widget>
@@ -97,12 +110,15 @@
          <height>0</height>
         </size>
        </property>
+<<<<<<< HEAD
        <property name="font">
         <font>
          <family>MS Shell Dlg 2</family>
          <pointsize>8</pointsize>
         </font>
        </property>
+=======
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
        <property name="cursor" stdset="0">
         <cursorShape>ArrowCursor</cursorShape>
        </property>
@@ -116,7 +132,11 @@
       <x>-10</x>
       <y>0</y>
       <width>1051</width>
+<<<<<<< HEAD
       <height>31</height>
+=======
+      <height>41</height>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
      </rect>
     </property>
     <property name="sizePolicy">
@@ -143,7 +163,11 @@
        <x>970</x>
        <y>0</y>
        <width>71</width>
+<<<<<<< HEAD
        <height>31</height>
+=======
+       <height>41</height>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
       </rect>
      </property>
      <property name="sizePolicy">
@@ -160,12 +184,19 @@
      </property>
     </widget>
     <widget class="QPushButton" name="minimizebutton">
+<<<<<<< HEAD
      <property name="geometry">
       <rect>
        <x>900</x>
        <y>0</y>
        <width>71</width>
-       <height>31</height>
+=======
+     <property name="geometry">
+      <rect>
+       <x>900</x>
+       <y>0</y>
+       <width>71</width>
+       <height>41</height>
       </rect>
      </property>
      <property name="sizePolicy">
@@ -181,6 +212,88 @@
       <bool>true</bool>
      </property>
     </widget>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>24</x>
+       <y>5</y>
+       <width>271</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Cute Zealand</family>
+       <pointsize>12</pointsize>
+       <weight>50</weight>
+       <bold>false</bold>
+      </font>
+     </property>
+     <property name="text">
+      <string>Client File Browser v2.0</string>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="frame_3">
+    <property name="geometry">
+     <rect>
+      <x>-10</x>
+      <y>40</y>
+      <width>1051</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="sizePolicy">
+     <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+      <horstretch>0</horstretch>
+      <verstretch>0</verstretch>
+     </sizepolicy>
+    </property>
+    <property name="autoFillBackground">
+     <bool>false</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">border: 0;
+background-color: rgb(28, 41, 54);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::Box</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Plain</enum>
+    </property>
+    <widget class="QPushButton" name="File">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>0</y>
+       <width>81</width>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+<<<<<<< HEAD
+     <property name="text">
+      <string>-</string>
+=======
+     <property name="styleSheet">
+      <string notr="true">border: none;</string>
+     </property>
+     <property name="text">
+      <string>File</string>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
+     </property>
+     <property name="flat">
+      <bool>true</bool>
+     </property>
+    </widget>
+<<<<<<< HEAD
     <widget class="QLabel" name="label">
      <property name="geometry">
       <rect>
@@ -251,6 +364,28 @@ background-color: rgb(28, 41, 54);</string>
      </property>
      <property name="text">
       <string>File</string>
+=======
+    <widget class="QPushButton" name="settingsbutton">
+     <property name="geometry">
+      <rect>
+       <x>100</x>
+       <y>0</y>
+       <width>101</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="sizePolicy">
+      <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+       <horstretch>0</horstretch>
+       <verstretch>0</verstretch>
+      </sizepolicy>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border: none;</string>
+     </property>
+     <property name="text">
+      <string>Settings</string>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
      </property>
      <property name="flat">
       <bool>true</bool>
@@ -455,6 +590,7 @@ border-color: rgb(25, 35, 45);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+<<<<<<< HEAD
    <zorder>groupBox</zorder>
    <zorder>frame</zorder>
    <zorder>frame_3</zorder>
@@ -466,6 +602,131 @@ border-color: rgb(25, 35, 45);</string>
    <zorder>rightarrow</zorder>
    <zorder>yearline</zorder>
    <zorder>line</zorder>
+=======
+   <widget class="QLineEdit" name="lineEdit">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>861</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Regencie Alt</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="toolTip">
+     <string extracomment="test"/>
+    </property>
+    <property name="placeholderText">
+     <string extracomment="tester"/>
+    </property>
+   </widget>
+   <widget class="QLabel" name="clientlabel">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>100</y>
+      <width>801</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Cute Zealand</family>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="text">
+     <string>Brett &amp; Angela Marshall Lifestyle Family Trust</string>
+    </property>
+   </widget>
+   <widget class="QSpinBox" name="spinBox">
+    <property name="geometry">
+     <rect>
+      <x>900</x>
+      <y>100</y>
+      <width>121</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Regencie Alt</family>
+      <pointsize>24</pointsize>
+     </font>
+    </property>
+    <property name="minimum">
+     <number>2010</number>
+    </property>
+    <property name="maximum">
+     <number>2025</number>
+    </property>
+    <property name="value">
+     <number>2019</number>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>70</y>
+      <width>1032</width>
+      <height>1</height>
+     </rect>
+    </property>
+    <property name="minimumSize">
+     <size>
+      <width>1032</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>900</width>
+      <height>1</height>
+     </size>
+    </property>
+    <property name="baseSize">
+     <size>
+      <width>0</width>
+      <height>0</height>
+     </size>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>91</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>CLIENT NAME</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>930</x>
+      <y>80</y>
+      <width>71</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TAX YEAR</string>
+    </property>
+   </widget>
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
   </widget>
  </widget>
  <resources/>

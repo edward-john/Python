@@ -13,7 +13,11 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
+<<<<<<< HEAD
         MainWindow.resize(1032, 677)
+=======
+        MainWindow.resize(1032, 685)
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -22,7 +26,11 @@ class Ui_MainWindow(object):
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
+<<<<<<< HEAD
         self.groupBox.setGeometry(QtCore.QRect(10, 150, 1012, 511))
+=======
+        self.groupBox.setGeometry(QtCore.QRect(10, 160, 1012, 511))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -42,7 +50,11 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollArea.setObjectName("scrollArea")
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
+<<<<<<< HEAD
         self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 279, 476))
+=======
+        self.scrollAreaWidgetContents.setGeometry(QtCore.QRect(0, 0, 278, 469))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         self.scrollAreaWidgetContents.setObjectName("scrollAreaWidgetContents")
         self.scrollArea.setWidget(self.scrollAreaWidgetContents)
         self.horizontalLayout.addWidget(self.scrollArea)
@@ -54,15 +66,22 @@ class Ui_MainWindow(object):
         self.treeView.setSizePolicy(sizePolicy)
         self.treeView.setMinimumSize(QtCore.QSize(700, 0))
         self.treeView.setBaseSize(QtCore.QSize(0, 0))
+<<<<<<< HEAD
         font = QtGui.QFont()
         font.setFamily("MS Shell Dlg 2")
         font.setPointSize(8)
         self.treeView.setFont(font)
+=======
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         self.treeView.viewport().setProperty("cursor", QtGui.QCursor(QtCore.Qt.ArrowCursor))
         self.treeView.setObjectName("treeView")
         self.horizontalLayout.addWidget(self.treeView)
         self.frame = QtWidgets.QFrame(self.centralwidget)
+<<<<<<< HEAD
         self.frame.setGeometry(QtCore.QRect(-10, 0, 1051, 31))
+=======
+        self.frame.setGeometry(QtCore.QRect(-10, 0, 1051, 41))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -74,6 +93,7 @@ class Ui_MainWindow(object):
         self.frame.setFrameShadow(QtWidgets.QFrame.Plain)
         self.frame.setObjectName("frame")
         self.closebutton = QtWidgets.QPushButton(self.frame)
+<<<<<<< HEAD
         self.closebutton.setGeometry(QtCore.QRect(970, 0, 71, 31))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
@@ -87,12 +107,31 @@ class Ui_MainWindow(object):
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
+=======
+        self.closebutton.setGeometry(QtCore.QRect(970, 0, 71, 41))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.closebutton.sizePolicy().hasHeightForWidth())
+        self.closebutton.setSizePolicy(sizePolicy)
+        self.closebutton.setFlat(True)
+        self.closebutton.setObjectName("closebutton")
+        self.minimizebutton = QtWidgets.QPushButton(self.frame)
+        self.minimizebutton.setGeometry(QtCore.QRect(900, 0, 71, 41))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Expanding)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         sizePolicy.setHeightForWidth(self.minimizebutton.sizePolicy().hasHeightForWidth())
         self.minimizebutton.setSizePolicy(sizePolicy)
         self.minimizebutton.setFlat(True)
         self.minimizebutton.setObjectName("minimizebutton")
         self.label = QtWidgets.QLabel(self.frame)
+<<<<<<< HEAD
         self.label.setGeometry(QtCore.QRect(24, 0, 271, 31))
+=======
+        self.label.setGeometry(QtCore.QRect(24, 5, 271, 31))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         font = QtGui.QFont()
         font.setFamily("Cute Zealand")
         font.setPointSize(12)
@@ -101,7 +140,11 @@ class Ui_MainWindow(object):
         self.label.setFont(font)
         self.label.setObjectName("label")
         self.frame_3 = QtWidgets.QFrame(self.centralwidget)
+<<<<<<< HEAD
         self.frame_3.setGeometry(QtCore.QRect(-10, 30, 1051, 31))
+=======
+        self.frame_3.setGeometry(QtCore.QRect(-10, 40, 1051, 31))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -134,7 +177,11 @@ class Ui_MainWindow(object):
         self.settingsbutton.setFlat(True)
         self.settingsbutton.setObjectName("settingsbutton")
         self.lineEdit = QtWidgets.QLineEdit(self.centralwidget)
+<<<<<<< HEAD
         self.lineEdit.setGeometry(QtCore.QRect(10, 90, 861, 51))
+=======
+        self.lineEdit.setGeometry(QtCore.QRect(10, 100, 861, 51))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         font = QtGui.QFont()
         font.setFamily("Regencie Alt")
         font.setPointSize(24)
@@ -143,14 +190,33 @@ class Ui_MainWindow(object):
         self.lineEdit.setPlaceholderText("")
         self.lineEdit.setObjectName("lineEdit")
         self.clientlabel = QtWidgets.QLabel(self.centralwidget)
+<<<<<<< HEAD
         self.clientlabel.setGeometry(QtCore.QRect(20, 90, 801, 51))
+=======
+        self.clientlabel.setGeometry(QtCore.QRect(20, 100, 801, 51))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         font = QtGui.QFont()
         font.setFamily("Cute Zealand")
         font.setPointSize(20)
         self.clientlabel.setFont(font)
         self.clientlabel.setObjectName("clientlabel")
+<<<<<<< HEAD
         self.line = QtWidgets.QFrame(self.centralwidget)
         self.line.setGeometry(QtCore.QRect(0, 60, 1032, 1))
+=======
+        self.spinBox = QtWidgets.QSpinBox(self.centralwidget)
+        self.spinBox.setGeometry(QtCore.QRect(900, 100, 121, 51))
+        font = QtGui.QFont()
+        font.setFamily("Regencie Alt")
+        font.setPointSize(24)
+        self.spinBox.setFont(font)
+        self.spinBox.setMinimum(2010)
+        self.spinBox.setMaximum(2025)
+        self.spinBox.setProperty("value", 2019)
+        self.spinBox.setObjectName("spinBox")
+        self.line = QtWidgets.QFrame(self.centralwidget)
+        self.line.setGeometry(QtCore.QRect(0, 70, 1032, 1))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         self.line.setMinimumSize(QtCore.QSize(1032, 0))
         self.line.setMaximumSize(QtCore.QSize(900, 1))
         self.line.setBaseSize(QtCore.QSize(0, 0))
@@ -158,6 +224,7 @@ class Ui_MainWindow(object):
         self.line.setFrameShadow(QtWidgets.QFrame.Sunken)
         self.line.setObjectName("line")
         self.label_2 = QtWidgets.QLabel(self.centralwidget)
+<<<<<<< HEAD
         self.label_2.setGeometry(QtCore.QRect(10, 70, 91, 16))
         self.label_2.setObjectName("label_2")
         self.label_3 = QtWidgets.QLabel(self.centralwidget)
@@ -204,6 +271,13 @@ class Ui_MainWindow(object):
         self.rightarrow.raise_()
         self.yearline.raise_()
         self.line.raise_()
+=======
+        self.label_2.setGeometry(QtCore.QRect(10, 80, 91, 16))
+        self.label_2.setObjectName("label_2")
+        self.label_3 = QtWidgets.QLabel(self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(930, 80, 71, 16))
+        self.label_3.setObjectName("label_3")
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -218,8 +292,14 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Client File Browser v2.0"))
         self.File.setText(_translate("MainWindow", "File"))
         self.settingsbutton.setText(_translate("MainWindow", "Settings"))
+<<<<<<< HEAD
         self.clientlabel.setText(_translate("MainWindow", "AgriSea New Zealand 2010 Limited prev AgriSea New Zealand Seaweed Limited"))
         self.label_2.setText(_translate("MainWindow", "CLIENT NAME"))
         self.label_3.setText(_translate("MainWindow", "TAX YEAR"))
         self.leftarrow.setText(_translate("MainWindow", "⯇"))
         self.rightarrow.setText(_translate("MainWindow", "⯈"))
+=======
+        self.clientlabel.setText(_translate("MainWindow", "Brett & Angela Marshall Lifestyle Family Trust"))
+        self.label_2.setText(_translate("MainWindow", "CLIENT NAME"))
+        self.label_3.setText(_translate("MainWindow", "TAX YEAR"))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f

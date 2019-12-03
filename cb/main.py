@@ -21,6 +21,7 @@ class Window(main.Ui_MainWindow, QMainWindow):
         """Window Object"""
         super(Window, self).__init__()
 
+<<<<<<< HEAD
         self.setupUi(self)  # Initialize UI
         self.clientdir = 'Z:\\Clients Files'  # Client Default Directory
         self.populate()  # Run FileSystem Model
@@ -36,6 +37,11 @@ class Window(main.Ui_MainWindow, QMainWindow):
                 f.write('clientdir:\nautocomplete:\nlastclient:\nlastyear:')
                 f.close
 
+=======
+        self.setupUi(self) #Initialize UI
+        self.populate() #Run FileSystem Model
+        self.title = 'Client File Browser' #Set Window Title
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         # Set Flags (Frameless)
         flags = QtCore.Qt.WindowFlags(QtCore.Qt.FramelessWindowHint)
         self.setWindowFlags(flags)
@@ -44,6 +50,7 @@ class Window(main.Ui_MainWindow, QMainWindow):
         self.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
         self.treeView.customContextMenuRequested.connect(self.context_menu)
 
+<<<<<<< HEAD
         self.oldPos = self.pos()  # variable for dragging frameless window
 
         self.client_names()  # autocomplete parameters
@@ -56,6 +63,17 @@ class Window(main.Ui_MainWindow, QMainWindow):
         self.diryear = f'31 March {self.year}'
         self.yearline.setText(self.year)
         # Show Window
+=======
+        self.oldPos = self.pos() #variable for dragging frameless window
+
+        self.client_names() #autocomplete parameters
+
+        self.actions() #loading all actions
+
+        self.lineEdit.hide()
+        self.spinBox.setProperty("value", datetime.today().year)
+        #Show Window
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         self.show()
 
 
@@ -63,8 +81,13 @@ class Window(main.Ui_MainWindow, QMainWindow):
         """Hide label and show line edit"""
         self.clientlabel.hide()
         self.lineEdit.show()
+<<<<<<< HEAD
 
 
+=======
+        
+    
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
     def hide_show(self):
         """Show label, hide line edit and update label"""
         self.clientlabel.show()
@@ -75,6 +98,7 @@ class Window(main.Ui_MainWindow, QMainWindow):
     def loadclientname(self):
         """Update client label from auto complete text"""
         self.clientname = self.lineEdit.text()
+<<<<<<< HEAD
         self.clientlabel.setText(self.clientname)
         self.clientpath = os.path.join(self.clientdir, self.clientname,
                                         self.diryear, )
@@ -95,6 +119,11 @@ class Window(main.Ui_MainWindow, QMainWindow):
         self.diryear = f'31 March {self.year}'
         self.yearline.setText(self.year)
         self.loadclientname()
+=======
+        print(self.clientname)
+        self.clientlabel.setText(self.clientname)
+
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
 
     def actions(self):
         """All actions for buttons"""
@@ -103,13 +132,19 @@ class Window(main.Ui_MainWindow, QMainWindow):
         self.completer.activated.connect(self.hide_show)
         self.settingsbutton.clicked.connect(self.settings)
         self.File.clicked.connect(self.show_hide)
+<<<<<<< HEAD
         self.rightarrow.clicked.connect(self.addyear)
         self.leftarrow.clicked.connect(self.lessyear)
+=======
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
 
 
     def settings(self):
         """Open settings dialog box"""
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         self.settingsbox = Settings()
         self.settingsbox.exec_()
 
@@ -119,13 +154,21 @@ class Window(main.Ui_MainWindow, QMainWindow):
         self.model = QtWidgets.QFileSystemModel()
         self.model.setRootPath((QtCore.QDir.rootPath()))
         self.treeView.setModel(self.model)
+<<<<<<< HEAD
         self.treeView.setRootIndex(self.model.index(self.clientdir))
+=======
+        self.treeView.setRootIndex(self.model.index(path))
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         self.treeView.setSortingEnabled(1)
 
 
     def client_names(self):
         """Auto complete list of entries"""
+<<<<<<< HEAD
         self.clients = os.listdir(self.clientdir)
+=======
+        self.clients = om.fullpath('Clients Files')
+>>>>>>> 7594f096c44ea07b13b666e430b26ebdd0d1022f
         self.completer = QCompleter(self.clients)
         self.completer.setCaseSensitivity(0)
         self.completer.setMaxVisibleItems(10)
@@ -178,6 +221,36 @@ class Settings(settings.Ui_Dialog, QDialog):
         self.setupUi(self)
         self.show()
 
+
+    # def mouseDoubleClickEvent(self, event):
+    #     self.open_file()
+
+
+    def center(self):
+        qr = self.frameGeometry()
+        cp = QDesktopWidget().availableGeometry().center()
+        qr.moveCenter(cp)
+        self.move(qr.topLeft())
+        self.oldPos = self.pos() #variable for dragging frameless window
+
+
+    def mousePressEvent(self, event):
+        self.oldPos = event.globalPos()
+        # print(QLabel.mousePressEvent(self.clientlabel, event))
+
+
+    def mouseMoveEvent(self, event):
+        delta = QPoint(event.globalPos() - self.oldPos)
+        self.move(self.x() + delta.x(), self.y() + delta.y())
+        self.oldPos = event.globalPos()
+
+
+class Settings(settings.Ui_Dialog, QDialog):
+    def __init__(self):
+        super(Settings, self).__init__()
+        self.setupUi(self)
+        self.show()
+    
 
     def center(self):
         qr = self.frameGeometry()

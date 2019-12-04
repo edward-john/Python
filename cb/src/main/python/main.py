@@ -1,6 +1,5 @@
 import os
 import sys
-import office.main as om
 import qdarkstyle
 from datetime import datetime
 
@@ -17,6 +16,7 @@ from PyQt5.QtWidgets import (QAction, QApplication, QComboBox, QDesktopWidget,
 
 from ui import main, settings
 
+print(sys.path)
 
 class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
     def __init__(self):

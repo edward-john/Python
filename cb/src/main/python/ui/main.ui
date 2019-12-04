@@ -320,7 +320,7 @@ background-color: rgb(28, 41, 54);</string>
      </font>
     </property>
     <property name="text">
-     <string>AgriSea New Zealand 2010 Limited prev AgriSea New Zealand Seaweed Limited</string>
+     <string>Select a client...</string>
     </property>
    </widget>
    <widget class="Line" name="line">
@@ -455,6 +455,79 @@ border-color: rgb(25, 35, 45);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
+   <widget class="QLineEdit" name="addressbar">
+    <property name="geometry">
+     <rect>
+      <x>140</x>
+      <y>150</y>
+      <width>881</width>
+      <height>31</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="upper">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>150</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(28, 41, 54);</string>
+    </property>
+    <property name="text">
+     <string>🡅</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="forwardbutton">
+    <property name="geometry">
+     <rect>
+      <x>60</x>
+      <y>150</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(28, 41, 54);</string>
+    </property>
+    <property name="text">
+     <string>🡆</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="backbutton">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>150</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>14</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(28, 41, 54);</string>
+    </property>
+    <property name="text">
+     <string>🡄</string>
+    </property>
+   </widget>
    <zorder>groupBox</zorder>
    <zorder>frame</zorder>
    <zorder>frame_3</zorder>
@@ -466,6 +539,10 @@ border-color: rgb(25, 35, 45);</string>
    <zorder>rightarrow</zorder>
    <zorder>yearline</zorder>
    <zorder>line</zorder>
+   <zorder>addressbar</zorder>
+   <zorder>upper</zorder>
+   <zorder>forwardbutton</zorder>
+   <zorder>backbutton</zorder>
   </widget>
  </widget>
  <resources/>

@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'ui\\main.ui'
+# Form implementation generated from reading ui file 'src\\main\\python\\ui\\main.ui'
 #
-# Created by: PyQt5 UI code generator 5.13.0
+# Created by: PyQt5 UI code generator 5.9.2
 #
 # WARNING! All changes made in this file will be lost!
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
-
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -193,6 +191,30 @@ class Ui_MainWindow(object):
         self.yearline.setInputMethodHints(QtCore.Qt.ImhDigitsOnly)
         self.yearline.setAlignment(QtCore.Qt.AlignCenter)
         self.yearline.setObjectName("yearline")
+        self.addressbar = QtWidgets.QLineEdit(self.centralwidget)
+        self.addressbar.setGeometry(QtCore.QRect(140, 150, 881, 31))
+        self.addressbar.setObjectName("addressbar")
+        self.upper = QtWidgets.QPushButton(self.centralwidget)
+        self.upper.setGeometry(QtCore.QRect(100, 150, 31, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.upper.setFont(font)
+        self.upper.setStyleSheet("background-color: rgb(28, 41, 54);")
+        self.upper.setObjectName("upper")
+        self.forwardbutton = QtWidgets.QPushButton(self.centralwidget)
+        self.forwardbutton.setGeometry(QtCore.QRect(60, 150, 31, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.forwardbutton.setFont(font)
+        self.forwardbutton.setStyleSheet("background-color: rgb(28, 41, 54);")
+        self.forwardbutton.setObjectName("forwardbutton")
+        self.backbutton = QtWidgets.QPushButton(self.centralwidget)
+        self.backbutton.setGeometry(QtCore.QRect(20, 150, 31, 31))
+        font = QtGui.QFont()
+        font.setPointSize(14)
+        self.backbutton.setFont(font)
+        self.backbutton.setStyleSheet("background-color: rgb(28, 41, 54);")
+        self.backbutton.setObjectName("backbutton")
         self.groupBox.raise_()
         self.frame.raise_()
         self.frame_3.raise_()
@@ -204,6 +226,10 @@ class Ui_MainWindow(object):
         self.rightarrow.raise_()
         self.yearline.raise_()
         self.line.raise_()
+        self.addressbar.raise_()
+        self.upper.raise_()
+        self.forwardbutton.raise_()
+        self.backbutton.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -218,8 +244,12 @@ class Ui_MainWindow(object):
         self.label.setText(_translate("MainWindow", "Client File Browser v2.0"))
         self.File.setText(_translate("MainWindow", "File"))
         self.settingsbutton.setText(_translate("MainWindow", "Settings"))
-        self.clientlabel.setText(_translate("MainWindow", "AgriSea New Zealand 2010 Limited prev AgriSea New Zealand Seaweed Limited"))
+        self.clientlabel.setText(_translate("MainWindow", "Select a client..."))
         self.label_2.setText(_translate("MainWindow", "CLIENT NAME"))
         self.label_3.setText(_translate("MainWindow", "TAX YEAR"))
         self.leftarrow.setText(_translate("MainWindow", "⯇"))
         self.rightarrow.setText(_translate("MainWindow", "⯈"))
+        self.upper.setText(_translate("MainWindow", "🡅"))
+        self.forwardbutton.setText(_translate("MainWindow", "🡆"))
+        self.backbutton.setText(_translate("MainWindow", "🡄"))
+

@@ -16,7 +16,7 @@ from PyQt5.QtWidgets import (QAction, QApplication, QComboBox, QDesktopWidget,
 
 from ui import main, settings
 
-print(sys.path)
+
 
 class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
     def __init__(self):
@@ -60,6 +60,19 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
 
         # Set instance of window app
         self.show()
+
+    #TODO: Go up one level folder                                // ETA: 15 Minutes
+    #TODO: Error message on tree view if no folder found         // ETA: 30 Minutes
+    #TODO: Click event on clientlabel to show lineedit           // ETA: 1-3 Hours
+    #TODO: Settings configuration >> Custom folder structure     // ETA: 45 Minutes
+    #TODO: Tax year to read only available folders               // ETA: 2 Hours
+    #TODO: Extract information from latest workpapers            // ETA: 4 Hours
+    #TODO: For future update > Add XPM Links                     // ETA: 10 Hours
+    #TODO: Context Menu > Add New  > Workpapers / Folder         // ETA: 30 Minutes
+    #TODO: Add double click event to open files in tree view     // ETA: 50 Minutes
+    #TODO: Add images for close and minimize button              // ETA: 20 Minutes
+    #TODO: Add address bar                                       // ETA: 30 Minutes
+    #TODO: Dynamic font size, dependent of len()                 // ETA: 15 Minutes
 
 
     def show_hide(self):

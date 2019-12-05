@@ -1,6 +1,7 @@
 import os
 import sys
 import qdarkstyle
+import xlwings as xw
 from datetime import datetime
 
 from fbs_runtime.application_context.PyQt5 import ApplicationContext
@@ -26,6 +27,7 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
         self.setupUi(self)
 
         # Load settings
+        self.settingsbox = Settings()
         self.load_settings()
 
         # Class Variables
@@ -42,6 +44,14 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
         self.lineEdit.hide()
         self.yearline.setText(self.year)
         self.treeView.setRootIndex(self.model.index(self.clientdir))
+        self.wpfolder = 'Annual Workpapers'
+        self.prevpath = []
+        self.listyear = []
+        self.clientname = ''
+        self.backbutton.setEnabled(False)
+        self.toggle_year(False)
+        self.count = 0
+        self.counter = 0
 
         # Context Menu
         self.treeView.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
@@ -50,17 +60,13 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
         # Set instance of window app
         self.show()
 
-    # TODO: Go up one level folder                                // ETA: 15 Minutes
     # TODO: Error message on tree view if no folder found         // ETA: 30 Minutes
-    # TODO: Click event on clientlabel to show lineedit           // ETA: 1-3 Hours
-    # TODO: Settings configuration >> Custom folder structure     // ETA: 45 Minutes
     # TODO: Tax year to read only available folders               // ETA: 2 Hours
     # TODO: Extract information from latest workpapers            // ETA: 4 Hours
     # TODO: For future update > Add XPM Links                     // ETA: 10 Hours
     # TODO: Context Menu > Add New  > Workpapers / Folder         // ETA: 30 Minutes
     # TODO: Add double click event to open files in tree view     // ETA: 50 Minutes
     # TODO: Add images for close and minimize button              // ETA: 20 Minutes
-    # TODO: Add address bar                                       // ETA: 30 Minutes
     # TODO: Dynamic font size, dependent of len()                 // ETA: 15 Minutes
 
     def load_settings(self):
@@ -86,7 +92,7 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
             line = lines.strip('\n').split('=')
             self.settings[line[0]] = line[1]
 
-        # Declaring variables
+        # Declaring variables from config file
         if self.settings['clientdir']:
             self.clientdir = self.settings['clientdir']
         else:
@@ -96,43 +102,126 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
         self.yearpref = self.settings['yearprefix']
         self.year = str(datetime.now().year)
         self.diryear = f'{self.yearpref}{self.year}'
-        self.wpfolder = 'Annual Workpapers'
-        self.prevpath = []
 
-    def select_client(self):
+    def select_client(self, event):
         """Hide label and show line edit"""
         self.clientlabel.hide()
         self.lineEdit.show()
 
     def client_selected(self):
         """Show label, hide line edit and update label"""
-        self.clientlabel.show()
         self.lineEdit.hide()
+        self.clientlabel.show()
         self.clientname = self.lineEdit.text()
-        self.clientlabel.setText(self.clientname)
-        self.folder()
+        self.folder(opt='selected')
 
-    def folder(self):
-        self.path = os.path.join(self.clientdir, self.clientname,
-                                self.diryear, self.wpfolder)
-        self.treeView.setRootIndex(self.model.index(self.path))
-        self.prevpath.append(self.path) #Attaching variable to store paths
-        self.addressbar.setText(self.path)
-        print(self.prevpath)
+    def folder(self, opt=None):
+        """Changing folder function, all of them passed here"""
+
+        # Detect how folder function is initialized
+        if opt == 'selected':
+            self.path = os.path.join(self.clientdir, self.clientname,
+                                     self.diryear)
+        elif opt == 'back':
+            self.path = self.prevpath[self.counter-1]
+        elif opt == 'manual':
+            self.path = self.file_path
+        elif opt == 'up':
+            self.path = os.path.dirname(self.path)
+        elif opt == 'switch':
+            print(self.path)
+            self.path = self.path.replace(self.curryear, self.newyear)
+            print(self.path)
+            print(len(self.curryear), len(self.newyear))
+
+        self.treeView.setRootIndex(self.model.index(self.path)) #Run folder
+
+        #Detect year and declare year variables
+        if len(self.path.split('\\')) >= 4:
+            if self.yearpref in self.path.split('\\')[3]:
+                self.toggle_year(True)
+                currfolder = os.path.basename(self.path)
+                index = self.treeView.model()
+                index = index.index(1,0)
+                self.treeView.expand(index)
+                self.yearline.setText(currfolder.strip(self.yearpref))
+        else:
+            self.toggle_year(False)
+
+        #Detect if current index is inside client
+        if self.path == self.clientdir:
+            self.clientlabel.setText('Select a client...')
+            self.lineEdit.setText('')
+            self.lineEdit.hide()
+            self.clientlabel.show()
+        elif len(self.path.split('\\')) >= 3:  # Detect if on second level
+            self.prevclient = self.clientname
+            self.clientname = self.path.split('\\')[2]
+            self.clientfolder = '\\'.join(self.path.split('\\')[0:3])
+            self.clientlabel.setText(self.clientname)
+            self.lineEdit.setText(self.clientname)
+            self.lineEdit.hide()
+            self.clientlabel.show()
+            if self.prevclient != self.clientname:
+                self.years(self.clientfolder, clear=True)
+                print(self.listyear)
+
+        # Storing paths to a list
+        if not opt == 'back':
+            self.counter += 1  # Usage Counter
+            if self.counter == 1:
+                self.prevpath.append(self.clientdir)
+            else:
+                self.prevpath.append(self.path)
+
+        # Toggle year widget if current index contains year pref
+        self.windowspath = self.path.replace('/', '\\')
+        self.addressbar.setText(self.windowspath)
+        self.backbutton.setEnabled(True)
+
+    def years(self, folderthree, clear=None):
+        """Create a list of years from folder structure"""
+        if clear:
+            self.listyear = []
+            self.index = 0
+
+        folders = os.listdir(folderthree)
+        for folder in folders:
+            if self.yearpref in folder:
+                year = folder.lstrip(self.yearpref)
+                self.listyear.append(year)
+
+    def goback(self):
+        self.folder(opt='back')
+
+    def go_up(self):
+        self.folder(opt='up')
+
+    def toggle_year(self, boolean):
+        self.rightarrow.setEnabled(boolean)
+        self.leftarrow.setEnabled(boolean)
+        self.yearline.setEnabled(boolean)
 
     def addyear(self):
         """Add one year on yearline"""
-        self.year = str(int(self.year) + 1)
-        self.diryear = f'{self.yearpref}{self.year}'
-        self.yearline.setText(self.year)
-        self.folder()
+        currfolder = os.path.basename(self.path)
+        self.curryear = currfolder.strip(self.yearpref)
+        self.index = self.listyear.index(self.curryear)
+        self.index = self.index + 1
+        self.newyear = self.listyear[self.index]
+        self.yearline.setText(self.newyear)
+        self.folder(opt='switch')
 
     def lessyear(self):
         """Less 1 year on yearline"""
-        self.year = str(int(self.year) - 1)
-        self.diryear = f'{self.yearpref}{self.year}'
-        self.yearline.setText(self.year)
-        self.folder()
+        currfolder = os.path.basename(self.path)
+        self.curryear = currfolder.strip(self.yearpref)
+        self.yearline.setText(self.curryear)
+        self.index = self.listyear.index(self.curryear)
+        self.index = self.index - 1
+        self.newyear = self.listyear[self.index]
+        self.yearline.setText(self.newyear)
+        self.folder(opt='switch')
 
     def actions(self):
         """All actions for buttons"""
@@ -140,13 +229,25 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
         self.minimizebutton.clicked.connect(self.showMinimized)
         self.completer.activated.connect(self.client_selected)
         self.settingsbutton.clicked.connect(self.open_settings)
-        self.File.clicked.connect(self.select_client)
         self.rightarrow.clicked.connect(self.addyear)
         self.leftarrow.clicked.connect(self.lessyear)
+        self.clientlabel.mousePressEvent = self.select_client
+        self.backbutton.clicked.connect(self.goback)
+        self.settingsbox.buttonBox.accepted.connect(self.save_settings)
+        self.treeView.mouseDoubleClickEvent = self.open_file
+        self.upper.clicked.connect(self.go_up)
+        self.lineEdit.returnPressed.connect(self.client_selected)
+
+    def save_settings(self):
+        self.settingsbox.writer()
+        self.load_settings()
+        self.setEnabled(True)
+        self.client_names()
+        self.actions()
 
     def open_settings(self):
         """Open settings dialog box"""
-        self.settingsbox = Settings()
+        self.settingsbox.show()
         self.settingsbox.exec_()
 
     def populate(self):
@@ -154,6 +255,7 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
         self.model = QtWidgets.QFileSystemModel()
         self.model.setRootPath((QtCore.QDir.rootPath()))
         self.treeView.setModel(self.model)
+        self.treeView.setColumnWidth(0, 350)
         self.treeView.setSortingEnabled(1)
 
     def client_names(self):
@@ -175,19 +277,22 @@ class Window(main.Ui_MainWindow, QMainWindow, ApplicationContext):
         cursor = QtGui.QCursor()
         menu.exec_(cursor.pos())
 
-    def open_file(self):
+    def open_file(self, *event):
         """Open Function"""
         index = self.treeView.currentIndex()
-        file_path = self.model.filePath(index)
-        os.startfile(file_path)
+        self.file_path = self.model.filePath(index)
+        self.file_path = self.file_path.replace('/', '\\')
+        if os.path.isdir(self.file_path):
+            self.folder(opt='manual')
+        else:
+            os.startfile(self.file_path)
 
     """ Event Handling """
 
     def keyPressEvent(self, event):
         """Key press events"""
         if event.key() == QtCore.Qt.Key_Backspace:  # Go back on previous folder
-            if self.prevfolder:
-                self.treeView.setRootIndex(self.model.index(self.clientdir))
+            self.folder(opt='back')
 
     def mousePressEvent(self, event):
         """Record the position when mouse is pressed"""
@@ -213,11 +318,9 @@ class Settings(settings.Ui_Dialog, QDialog):
         self.cmodes = ['Popup', 'Unfiltered Popup', 'Inline']
         self.autocomplete.addItems(self.cmodes)
         self.browse_button.clicked.connect(self.getClientpath)
-        self.buttonBox.accepted.connect(self.writer)
 
-        #Initiate
+        # Initiate
         self.reader()  # Apply displays to input widgets
-        self.show()
 
     def reader(self):
         self.settings = {}

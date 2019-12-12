@@ -79,6 +79,9 @@
      </item>
      <item>
       <widget class="QTreeView" name="treeView">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
        <property name="sizePolicy">
         <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -283,6 +286,9 @@ background-color: rgb(28, 41, 54);</string>
     </widget>
    </widget>
    <widget class="QLineEdit" name="lineEdit">
+    <property name="enabled">
+     <bool>true</bool>
+    </property>
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -297,11 +303,14 @@ background-color: rgb(28, 41, 54);</string>
       <pointsize>18</pointsize>
      </font>
     </property>
+    <property name="focusPolicy">
+     <enum>Qt::ClickFocus</enum>
+    </property>
     <property name="toolTip">
      <string extracomment="test"/>
     </property>
     <property name="placeholderText">
-     <string extracomment="tester"/>
+     <string extracomment="Select a client..."/>
     </property>
    </widget>
    <widget class="QLabel" name="clientlabel">
@@ -528,10 +537,10 @@ border-color: rgb(25, 35, 45);</string>
      <string>🡄</string>
     </property>
    </widget>
+   <zorder>lineEdit</zorder>
    <zorder>groupBox</zorder>
    <zorder>frame</zorder>
    <zorder>frame_3</zorder>
-   <zorder>lineEdit</zorder>
    <zorder>clientlabel</zorder>
    <zorder>label_2</zorder>
    <zorder>label_3</zorder>
@@ -545,6 +554,21 @@ border-color: rgb(25, 35, 45);</string>
    <zorder>backbutton</zorder>
   </widget>
  </widget>
+ <tabstops>
+  <tabstop>minimizebutton</tabstop>
+  <tabstop>closebutton</tabstop>
+  <tabstop>File</tabstop>
+  <tabstop>settingsbutton</tabstop>
+  <tabstop>leftarrow</tabstop>
+  <tabstop>rightarrow</tabstop>
+  <tabstop>yearline</tabstop>
+  <tabstop>backbutton</tabstop>
+  <tabstop>forwardbutton</tabstop>
+  <tabstop>upper</tabstop>
+  <tabstop>addressbar</tabstop>
+  <tabstop>scrollArea</tabstop>
+  <tabstop>treeView</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
